@@ -19,3 +19,27 @@
 *  STAMPA
 *   messaggio = il tuo biglietto costerà € (prezzo biglietto finale)  
 */
+
+const userAgeStr = prompt("Quanti hanni hai?");
+const distanceStr = prompt("Quanti chilometri devi percorrere");
+const priceKm = 0.21;
+const discountUnderage = 0.20;
+const discountOver65 = 0.40;
+let ticketPrice = 0;
+let message = "";
+
+const userAge = parseInt(userAgeStr);
+const distance = parseInt(distanceStr);
+
+if (userAge > 65) {
+    ticketPrice = (distance * priceKm) * (1 - discountOver65);
+    message = `Il costo finale del bigliettò sarà € ${ticketPrice.toFixed(2)}`;
+} else if (userAge >= 18) {
+    ticketPrice = distance * priceKm;
+    message = `Il costo finale del bigliettò sarà € ${ticketPrice.toFixed(2)}`;
+} else {
+    ticketPrice = (distance * priceKm) * (1 - discountUnderage);
+    message = `Il costo finale del bigliettò sarà € ${ticketPrice.toFixed(2)}`;
+}
+
+console.log(message);
