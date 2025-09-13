@@ -20,7 +20,7 @@
 *   messaggio = il tuo biglietto costerà € (prezzo biglietto finale)  
 */
 
-const userAgeStr = prompt("Quanti hanni hai?");
+const userAgeStr = prompt("Quanti anni hai?");
 const distanceStr = prompt("Quanti chilometri devi percorrere");
 const priceKm = 0.21;
 const discountUnderage = 0.20;
@@ -31,15 +31,19 @@ let message = "";
 const userAge = parseInt(userAgeStr);
 const distance = parseInt(distanceStr);
 
-if (userAge > 65) {
-    ticketPrice = (distance * priceKm) * (1 - discountOver65);
-    message = `Il costo finale del bigliettò sarà € ${ticketPrice.toFixed(2)}`;
-} else if (userAge >= 18) {
-    ticketPrice = distance * priceKm;
-    message = `Il costo finale del bigliettò sarà € ${ticketPrice.toFixed(2)}`;
+if (isNaN(userAge) || isNaN(distance)) {
+    message = `Errore: inserisci solo numeri validi, ricarica la pagina.`;
 } else {
+    if (userAge > 65) {
+    ticketPrice = (distance * priceKm) * (1 - discountOver65);
+    message = `Il costo finale del biglietto sarà € ${ticketPrice.toFixed(2)}`;
+    } else if (userAge >= 18) {
+    ticketPrice = distance * priceKm;
+    message = `Il costo finale del biglietto sarà € ${ticketPrice.toFixed(2)}`;
+    } else {
     ticketPrice = (distance * priceKm) * (1 - discountUnderage);
-    message = `Il costo finale del bigliettò sarà € ${ticketPrice.toFixed(2)}`;
+    message = `Il costo finale del biglietto sarà € ${ticketPrice.toFixed(2)}`;
+}
 }
 
 console.log(message);
