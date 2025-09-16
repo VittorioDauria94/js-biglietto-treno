@@ -85,24 +85,100 @@ const bigDiscount = 0.10;
 
 const breadChoise = prompt("Vorresti del pane? Rispondi con si o no");
 let breadQuantity = 0;
-if (breadChoise.toLowerCase() === "si") {
+if (breadChoise === null) {
+    receipt = "Errore: è stato inserito un valore errato, ricaricare la pagina.";
+} else { if (breadChoise.toLowerCase() === "si") {
     const breadQuantityStr = prompt("Quanto ne vorresti?");
-    breadQuantity = parseInt(breadQuantityStr);
+    if (breadQuantityStr === null) {
+        receipt = "Errore: è stato inserito un valore errato, ricaricare la pagina.";
+    } else {
+        breadQuantity = parseInt(breadQuantityStr);
+        }
+    }
 }
 
 const milkChoise = prompt("Vorresti del latte? Rispondi con si o no");
 let milkQuantity = 0;
-if (milkChoise.toLowerCase() === "si") {
+if (milkChoise === null) {
+    receipt = "Errore: è stato inserito un valore errato, ricaricare la pagina.";
+} else { if (milkChoise.toLowerCase() === "si") {
     const milkQuantityStr = prompt("Quanto ne vorresti?");
-    milkQuantity = parseInt(milkQuantityStr);
+    if (milkQuantityStr === null) {
+        receipt = "Errore: è stato inserito un valore errato, ricaricare la pagina.";
+    } else {
+        milkQuantity = parseInt(milkQuantityStr);
+        }
+    }
 }
 
 const eggsChoise = prompt("Vorresti delle uova? Rispondi con si o no");
 let eggsQuantity = 0;
-if (eggsChoise.toLowerCase() === "si") {
+if (eggsChoise === null) {
+    receipt = "Errore: è stato inserito un valore errato, ricaricare la pagina.";
+} else {if (eggsChoise.toLowerCase() === "si") {
     const eggsQuantityStr = prompt("Quante ne vorresti?");
-    eggsQuantity = parseInt(eggsQuantityStr);
+    if (eggsQuantityStr === null) {
+        receipt = "Errore: è stato inserito un valore errato, ricaricare la pagina.";
+    } else {
+        eggsQuantity = parseInt(eggsQuantityStr);
+        }
+    }
 }
 
 const fedelityCard = prompt("Hai la carta fedeltà? Rispondi con si o no");
+
+if (
+    isNaN(breadQuantity) || breadQuantity < 0 || 
+    isNaN(milkQuantity)  || milkQuantity < 0 || 
+    isNaN(eggsQuantity)  || eggsQuantity < 0 || 
+    fedelityCard === null || (fedelityCard.toLowerCase() !== "si" && fedelityCard.toLowerCase() !== "no")
+) {
+    receipt = "Errore: è stato inserito un valore errato, ricaricare la pagina.";
+} else { if (breadQuantity > 0 || milkQuantity > 0 || eggsQuantity > 0 ) {
+    price = (breadQuantity * bread) + (milkQuantity * milk) + (eggsQuantity * eggs);
+
+    if (fedelityCard.toLowerCase() === "si" && price < 20) {
+    finalPrice = price - (price * smallDiscount);
+    receipt = ` Pane, uova e latte di BoolMarket
+
+    qnt prodotto prezzo
+    ${breadQuantity}   Pane    ${(bread * breadQuantity).toFixed(2)} €
+    ${milkQuantity}   Latte     ${(milk * milkQuantity).toFixed(2)} €
+    ${eggsQuantity}   Uova     ${(eggs * eggsQuantity).toFixed(2)} €
+
+    Totale con sconto fedeltà al 5% ${finalPrice.toFixed(2)} €
+    Grazie e Arrivederci`;
+    
+    } else if (fedelityCard.toLowerCase() === "si" && price > 20) {
+    finalPrice = price - (price * bigDiscount);
+    receipt = ` Pane, uova e latte di BoolMarket
+
+    qnt prodotto prezzo
+    ${breadQuantity}   Pane   ${(bread * breadQuantity).toFixed(2)} €
+    ${milkQuantity}   Latte     ${(milk * milkQuantity).toFixed(2)} €
+    ${eggsQuantity}   Uova     ${(eggs * eggsQuantity).toFixed(2)} €
+
+    Totale con sconto fedeltà al 10% ${finalPrice.toFixed(2)} €
+    Grazie e Arrivederci`;
+    } else {
+    finalPrice = price;
+    receipt = ` Pane, uova e latte di BoolMarket
+
+    qnt prodotto prezzo
+    ${breadQuantity}   Pane    ${(bread * breadQuantity).toFixed(2)} €
+    ${milkQuantity}   Latte     ${(milk * milkQuantity).toFixed(2)} €
+    ${eggsQuantity}   Uova     ${(eggs * eggsQuantity).toFixed(2)} €
+
+    Totale ${finalPrice.toFixed(2)} €
+    Grazie e Arrivederci`;
+    }
+
+    } else {
+    receipt = "Non ha selezionato alcun prodotto, se vuole continuare ad acquistare ricarichi la pagina."
+    }   
+}
+
+
+console.log(receipt);
+
 
