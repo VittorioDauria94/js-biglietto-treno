@@ -47,13 +47,27 @@
 
 //Esercizio 3
 
+// const userName = prompt("Come ti chiami?");
+// let message = "";
 
-const userName = prompt("Come ti chiami?");
+// if (userName === "" || !isNaN(userName)) {
+//     message = "Errore: scrivi correttamente il tuo nome, ricarica la pagina.";
+// } else {
+//     message = `Ciao ${userName}`;
+// }
+// console.log(message);
+
+//Esercizio 4
+
 let message = "";
+const userName = prompt("Qual'è il tuo nome?");
+const userSurname = prompt("Qual'è il tuo cognome?");
+const userColor = prompt("Qual'è il tuo colore preferito?");
 
-if (userName === "" || !isNaN(userName)) {
-    message = "Errore: scrivi correttamente il tuo nome, ricarica la pagina.";
+if (userName === "" || userSurname === "" || userColor === "" || !isNaN(userName) || !isNaN(userSurname) || !isNaN(userColor)) {
+    message = "Errore: non hai risposto correttamente ad almeno una domanda, ricarica la pagina.";
 } else {
-    message = `Ciao ${userName}`;
+    message = `${userName}${userSurname}${userColor}23`.toLowerCase();
 }
+
 console.log(message);
