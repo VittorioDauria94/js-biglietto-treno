@@ -29,18 +29,31 @@
 
 // Esercizio 2
 
+// let message = "";
+// let yearOfBirth = 0;
+// const userAgeStr = prompt("Quanti anni hai?");
+// const currentYear = new Date().getFullYear();
+
+// const userAge = parseInt(userAgeStr);
+
+// if (isNaN(userAge)) {
+//     message = `Errore: inserisci correttamente la tua età numericamente, ricarica la pagina.`;
+// } else {
+//     yearOfBirth = currentYear - userAge;
+//     message = `Sei nato/a nel ${yearOfBirth}`;
+// }
+
+// console.log(message);
+
+//Esercizio 3
+
+
+const userName = prompt("Come ti chiami?");
 let message = "";
-let yearOfBirth = 0;
-const userAgeStr = prompt("Quanti anni hai?");
-const currentYear = new Date().getFullYear();
 
-const userAge = parseInt(userAgeStr);
-
-if (isNaN(userAge)) {
-    message = `Errore: inserisci correttamente la tua età numericamente, ricarica la pagina.`;
+if (userName === "" || !isNaN(userName)) {
+    message = "Errore: scrivi correttamente il tuo nome, ricarica la pagina.";
 } else {
-    yearOfBirth = currentYear - userAge;
-    message = `Sei nato/a nel ${yearOfBirth}`;
+    message = `Ciao ${userName}`;
 }
-
 console.log(message);
