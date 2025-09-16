@@ -59,15 +59,50 @@
 
 //Esercizio 4
 
-let message = "";
-const userName = prompt("Qual'è il tuo nome?");
-const userSurname = prompt("Qual'è il tuo cognome?");
-const userColor = prompt("Qual'è il tuo colore preferito?");
+// let message = "";
+// const userName = prompt("Qual'è il tuo nome?");
+// const userSurname = prompt("Qual'è il tuo cognome?");
+// const userColor = prompt("Qual'è il tuo colore preferito?");
 
-if (userName === "" || userSurname === "" || userColor === "" || !isNaN(userName) || !isNaN(userSurname) || !isNaN(userColor)) {
-    message = "Errore: non hai risposto correttamente ad almeno una domanda, ricarica la pagina.";
-} else {
-    message = `${userName}${userSurname}${userColor}23`.toLowerCase();
+// if (userName === "" || userSurname === "" || userColor === "" || !isNaN(userName) || !isNaN(userSurname) || !isNaN(userColor)) {
+//     message = "Errore: non hai risposto correttamente ad almeno una domanda, ricarica la pagina.";
+// } else {
+//     message = `${userName}${userSurname}${userColor}23`.toLowerCase();
+// }
+
+// console.log(message);
+
+//Esercizio 5
+
+let receipt = "";
+let price = 0;
+let finalPrice = 0;
+const bread = 1.50;
+const milk = 1.20;
+const eggs = 2.60;
+const smallDiscount = 0.05;
+const bigDiscount = 0.10;
+
+const breadChoise = prompt("Vorresti del pane? Rispondi con si o no");
+let breadQuantity = 0;
+if (breadChoise.toLowerCase() === "si") {
+    const breadQuantityStr = prompt("Quanto ne vorresti?");
+    breadQuantity = parseInt(breadQuantityStr);
 }
 
-console.log(message);
+const milkChoise = prompt("Vorresti del latte? Rispondi con si o no");
+let milkQuantity = 0;
+if (milkChoise.toLowerCase() === "si") {
+    const milkQuantityStr = prompt("Quanto ne vorresti?");
+    milkQuantity = parseInt(milkQuantityStr);
+}
+
+const eggsChoise = prompt("Vorresti delle uova? Rispondi con si o no");
+let eggsQuantity = 0;
+if (eggsChoise.toLowerCase() === "si") {
+    const eggsQuantityStr = prompt("Quante ne vorresti?");
+    eggsQuantity = parseInt(eggsQuantityStr);
+}
+
+const fedelityCard = prompt("Hai la carta fedeltà? Rispondi con si o no");
+
